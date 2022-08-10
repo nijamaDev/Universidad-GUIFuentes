@@ -1,7 +1,7 @@
-Default: requirements run
+Default: build run
 
-requirements:
-	python -m pip install -r requirements.txt
+build:
+	python -m pip install -r universidad/requirements.txt
 
 run:
-	python Main.py
+	python universidad/__init__.py
