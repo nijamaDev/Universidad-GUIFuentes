@@ -2,8 +2,8 @@
 
 ## Instalar requerimientos:
 
-    python setup.py build
+    python -m pip install .
 
-## Iniciar programa:
+## Ejecutar programa:
 
-    python universidad/__init__.py
+    python -m universidad

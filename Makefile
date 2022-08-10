@@ -1,7 +1,10 @@
 Default: build run
 
 build:
-	python -m pip install -r universidad/requirements.txt
+	python -m pip install .
 
 run:
-	python universidad/__init__.py
+	python -m universidad
+
+rm:
+	python -m pip uninstall -y universidad && rm -rf build universidad.egg-info universidad/__pycache__
