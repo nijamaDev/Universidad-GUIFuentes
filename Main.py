@@ -1,7 +1,11 @@
-# hello_world.py
+""" Main.py
+Autores:
+    Alejandro Caicedo - 1827260 - learningalone
+    Juan José Dorado  - 1827439 - Git-Fanfo
+    Nicolás Jaramillo - 1840558 - nijamaDev
+    Sara Maradiago    - 1741648 - SJMC29
 
-# hello_psg.py
-
+"""
 import PySimpleGUIQt as sg
 import os.path
 
@@ -30,8 +34,8 @@ image_viewer_column = [
 layout = [
     [
         sg.Column(file_list_column, key="-TEST-"),
-        # sg.VSeperator(),
-        # sg.Column(image_viewer_column),
+        sg.VSeperator(),
+        sg.Column(image_viewer_column),
     ]
 ]
 layoutest = [
@@ -66,9 +70,9 @@ while True:
             filename = os.path.join(
                 values["-FOLDER-"], values["-FILE LIST-"][0]
             )
-            window["-TEST-"].update(sg.VSeperator())
-            # window["-TOUT-"].update(filename)
-            # window["-IMAGE-"].update(filename=filename)
+            # window["-TEST-"].update(sg.VSeperator())
+            window["-TOUT-"].update(filename)
+            window["-IMAGE-"].update(filename=filename)
         except:
             pass
 
