@@ -6,5 +6,5 @@ build:
 run:
 	python -m universidad
 
-rm:
+clean:
 	python -m pip uninstall -y universidad && rm -rf build universidad.egg-info universidad/__pycache__
