@@ -13,5 +13,7 @@
 
 from universidad import universidadGUI as gui
 
+modelo = "../Universidad.mzn"
+
 if __name__ == "__main__":
-    gui.Main()
+    gui.Main(modelo)

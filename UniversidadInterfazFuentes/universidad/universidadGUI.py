@@ -1,7 +1,21 @@
-import PySimpleGUIQt as sg
 import os.path
+import PySimpleGUIQt as sg
+from minizinc import Instance, Model, Solver
+
+
+def resolver(n, m, ciudades, mod):
+    modelo = Model(mod)
+    gecode = Solver.lookup("gecode")
+    instance = Instance(gecode, modelo)
+    instance["n"] = n
+    instance["m"] = m
+    instance["ciudades"] = ciudades
+    result = instance.solve()
+    lgstDist = round(pow(result["largestDistance"], 0.5), 2)
+    return result
 
 # sg.theme('Reddit')   # Add a touch of color
+
 
 layout = [
     [
@@ -27,8 +41,11 @@ layout = [
 ]
 
 
-def Main():
+def Main(model):
     #  testWin()
+    print(resolver(10, 10, [[0, 1], [2, 4], [3, 8], [4, 1], [
+        6, 3], [6, 4], [6, 5], [8, 7], [9, 3], [9, 10]], model))
+    exit()
     window = sg.Window('Universidad', layout)
     while True:
         e, values = window.read()

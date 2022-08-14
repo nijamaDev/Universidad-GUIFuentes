@@ -11,6 +11,7 @@ setup(name='universidad',
       package_data={p: ["*"] for p in find_packages()},
       install_requires=[
           'PySimpleGUIQt',
+          'minizinc',
       ],
       zip_safe=False
       )
