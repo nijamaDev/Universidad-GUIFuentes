@@ -11,8 +11,9 @@ def resolver(n, m, ciudades, mod):
     instance["m"] = m
     instance["ciudades"] = ciudades
     result = instance.solve()
-    lgstDist = round(pow(result["largestDistance"], 0.5), 2)
-    return lgstDist
+    rtn = result["posUniversidad"]
+    rtn.append(round(pow(result["largestDistance"],0.5),2))
+    return rtn
 
 
 # sg.theme('Reddit')   # Add a touch of color
