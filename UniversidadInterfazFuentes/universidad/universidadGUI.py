@@ -42,18 +42,16 @@ layout = [
 
 
 def Main(model):
-    #  testWin()
-    print(resolver(10, 10, [[0, 1], [2, 4], [3, 8], [4, 1], [
-        6, 3], [6, 4], [6, 5], [8, 7], [9, 3], [9, 10]], model))
-    exit()
+    # testWin()
+    test(model)
     window = sg.Window('Universidad', layout)
     while True:
-        e, values = window.read()
-        if e == sg.WIN_CLOSED or e == 'Cancel':
+        ev, values = window.read()
+        if ev == sg.WIN_CLOSED or ev == 'Cancel':
             break
-        elif e == '-N-':
+        elif ev == '-N-':
             updateN(values['-N-'])
-        elif e == "-M-":
+        elif ev == "-M-":
             updateM(values['-M-'])
         print(values)
     window.close()
@@ -65,6 +63,12 @@ def updateN(N):
 
 def updateM(M):
     print(M)
+
+
+def test(model):
+    print(resolver(10, 10, [[0, 1], [2, 4], [3, 8], [4, 1], [
+          6, 3], [6, 4], [6, 5], [8, 7], [9, 3], [9, 10]], model))
+    exit()
 
 
 def testWin():
