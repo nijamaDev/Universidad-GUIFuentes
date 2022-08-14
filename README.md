@@ -2,8 +2,20 @@
 
 ## Instalar requerimientos:
 
+Puedes instalar los requerimientos con cualquiera de los dos comandos
+
+    make build
+
+O directamente utilizando python y pip:
+
     python -m pip install .
 
 ## Ejecutar programa:
 
-    python -m universidad
+Puedes ejecutar el programa con cualquiera de los dos comandos
+
+    make run
+
+O directamente con python:
+
+    python .

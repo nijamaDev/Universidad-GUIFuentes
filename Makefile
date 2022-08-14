@@ -4,7 +4,7 @@ build:
 	python -m pip install .
 
 run:
-	python -m universidad
+	python .
 
 clean:
-	python -m pip uninstall -y universidad && rm -rf build universidad.egg-info universidad/__pycache__
+	python -m pip uninstall -y universidad && rm -rf __pycache__ build universidad.egg-info universidad/__pycache__
