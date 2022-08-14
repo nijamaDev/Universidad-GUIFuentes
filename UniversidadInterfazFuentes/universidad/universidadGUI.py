@@ -12,11 +12,10 @@ def resolver(n, m, ciudades, mod):
     instance["ciudades"] = ciudades
     result = instance.solve()
     lgstDist = round(pow(result["largestDistance"], 0.5), 2)
-    return result
+    return lgstDist
+
 
 # sg.theme('Reddit')   # Add a touch of color
-
-
 layout = [
     [
         sg.Stretch(),
@@ -43,7 +42,7 @@ layout = [
 
 def Main(model):
     # testWin()
-    test(model)
+    # test(model)
     window = sg.Window('Universidad', layout)
     while True:
         ev, values = window.read()

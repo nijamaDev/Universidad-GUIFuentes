@@ -8,7 +8,7 @@ Puedes instalar los requerimientos con cualquiera de los dos comandos
 
 O directamente utilizando python y pip:
 
-    python -m pip install .
+    python3 -m pip install .
 
 ## Ejecutar programa:
 
@@ -18,4 +18,4 @@ Puedes ejecutar el programa con cualquiera de los dos comandos
 
 O directamente con python:
 
-    python .
+    python3 .
