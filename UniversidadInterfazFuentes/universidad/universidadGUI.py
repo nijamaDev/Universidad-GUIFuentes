@@ -16,42 +16,47 @@ def resolver(n, m, ciudades, mod):
 
 
 # sg.theme('Reddit')   # Add a touch of color
-layout = [
-    [
-        sg.Stretch(),
-        sg.Text('Bienvenido a ...'),
-        sg.Stretch()
-    ],
-    [
-        sg.Text('Tamaño del cuadrado (n)'),
-        sg.Stretch(),
-        sg.InputText(enable_events=True, key="-N-")
-    ],
-    [
-        sg.Text('Número de municipios (m)'),
-        sg.Stretch(),
-        sg.InputText(enable_events=True, key="-M-")
-    ],
-    [],
-    [
-        sg.Button('Ok'),
-        sg.Button('Cancel')
+def makeLayout(M):
+    layout = [
+        [
+            sg.Stretch(),
+            sg.Text('Bienvenido a Universidad solver'),
+            sg.Stretch()
+        ],
+        [
+            sg.Text('Tamaño del cuadrado (n)'),
+            sg.Stretch(),
+            sg.InputText(enable_events=True, key="-N-")
+        ],
+        [
+            sg.Text('Número de municipios (m)'),
+            sg.Stretch(),
+            sg.InputText(enable_events=True, key="-M-")
+        ],
+        [],
+        [sg.Button('Ok')],
+        [sg.Button('Salir')]
     ]
-]
+    return layout
 
 
 def Main(model):
     # testWin()
     # test(model)
-    window = sg.Window('Universidad', layout)
+    wTitle = 'Universidad'
+    location = (None, None)
+    window = sg.Window(wTitle, makeLayout(0), location=location)
     while True:
         ev, values = window.read()
         if ev == sg.WIN_CLOSED or ev == 'Cancel':
             break
-        elif ev == '-N-':
+        elif ev == 'Ok':
             updateN(values['-N-'])
-        elif ev == "-M-":
             updateM(values['-M-'])
+            M = 1
+            windowNew = sg.Window(wTitle, makeLayout(M), location=location)
+            window.Close()
+            window = windowNew
         print(values)
     window.close()
 
@@ -65,8 +70,21 @@ def updateM(M):
 
 
 def test(model):
-    print(resolver(10, 10, [[0, 1], [2, 4], [3, 8], [4, 1], [
-          6, 3], [6, 4], [6, 5], [8, 7], [9, 3], [9, 10]], model))
+    print(
+        resolver(
+            10, 10,
+            [
+                [0, 1],
+                [2, 4],
+                [3, 8],
+                [4, 1],
+                [6, 3],
+                [6, 4],
+                [6, 5],
+                [8, 7],
+                [9, 3],
+                [9, 10]
+            ], model))
     exit()
 
 
