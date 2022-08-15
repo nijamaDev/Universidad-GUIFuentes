@@ -8,10 +8,11 @@ location = (None, None)
 tMunicipio = '        Municipios        '
 n = ''
 m = 0
+dataName = 'Datos.dzn'
 
 
-def resolver(mod, file):
-    modelo = Model(mod)
+def resolver(model, file):
+    modelo = Model(model)
     gecode = Solver.lookup("gecode")
     modelo.add_file(file)
     instance = Instance(gecode, modelo)
@@ -27,7 +28,7 @@ def resolver(mod, file):
 def makeLayout():
     global n
     global m
-    layout = [
+    data_column = [
         [
             sg.Stretch(),
             sg.Text('Por favor, ingrese los siguientes datos:'),
@@ -75,6 +76,23 @@ def makeLayout():
         ],
         [sg.Button('Generar archivo',  key='-DATA-')]
     ]
+    result_column = [
+        [
+            sg.Stretch(),
+            sg.Text('RESULTADO'),
+            sg.Stretch()
+        ],
+        [
+            sg.Multiline(size=(40, m+5), key='textbox')
+        ]
+    ]
+    layout = [
+        [
+            sg.Column(data_column),
+            sg.VSeperator(),
+            sg.Column(result_column),
+        ]
+    ]
     return layout
 
 
@@ -101,9 +119,14 @@ def Main(model):
             try:
                 if (n > 0 and m > 0):
                     makeData(values)
-                    print('1')
-                    print(resolver(model, 'Datos.dzn'))
-                    print('2')
+                    aux = resolver(model, dataName)
+                    result = \
+                        "     Ubicación de la Universidad:\n" + \
+                        "Este:\t" + str(aux[0]) + " Km\n" + \
+                        "Norte:\t" + str(aux[1]) + " Km\n" + \
+                        "\n  Distancia más larga:  " + str(aux[2]) + " Km"
+
+                    window['textbox'].update(result)
             except:
                 err()
     window.close()
@@ -119,7 +142,7 @@ def makeData(values):
             "ciudades=[|" + \
             "\n|".join([values['ciudad'+str(i)] for i in range(m)]) \
             + "|];"
-        archivo = open("Datos.dzn", "w")
+        archivo = open(dataName, "w")
         archivo.write(newData)
         archivo.close()
 
@@ -128,7 +151,7 @@ def makeData(values):
 
 
 def err():
-    print('no mi rey')
+    print("something's wrong")
 
 
 def test():
