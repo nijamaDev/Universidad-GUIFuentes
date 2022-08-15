@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/mnt/ztorage/Dev/Universidad-GUIFuentes'
-make: Leaving directory '/mnt/ztorage/Dev/Universidad-GUIFuentes'
- 
-make: *** No targets specified and no makefile found.  Stop.
-
