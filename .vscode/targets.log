@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug 14 13:00:07 2022
+# Make data base, printed on Sun Aug 14 20:50:15 2022
 
 # Variables
 
@@ -100,8 +100,8 @@ XDG_CONFIG_DIRS = /app/etc/xdg:/etc/xdg
 ALSA_CONFIG_PATH = /usr/share/alsa/alsa-flatpak.conf
 # environment
 XDG_SESSION_DESKTOP = gnome
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST := Makefile
+# makefile
+MAKEFILE_LIST := 
 # environment
 FLATPAK_SANDBOX_DIR = /home/kiin/.var/app/com.visualstudio.code/sandbox
 # automatic
@@ -197,7 +197,7 @@ container = flatpak
 # environment
 GIO_LAUNCHED_DESKTOP_FILE = /var/lib/flatpak/exports/share/applications/com.visualstudio.code.desktop
 # makefile
-.DEFAULT_GOAL := Default
+.DEFAULT_GOAL := 
 # environment
 SYSTEMD_EXEC_PID = 2107
 # environment
@@ -221,7 +221,7 @@ LC_MEASUREMENT = ja_JP.UTF-8
 # environment
 DEBUGINFOD_URLS = https://debuginfod.fedoraproject.org/ 
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4504
+GIO_LAUNCHED_DESKTOP_FILE_PID = 92622
 # environment
 _ = /usr/bin/make
 # environment
@@ -269,7 +269,7 @@ ZYPAK_BIN = /app/bin
 # environment
 GDMSESSION = gnome
 # variable set hash-table stats:
-# Load=128/1024=12%, Rehash=0, Collisions=13/156=8%
+# Load=128/1024=12%, Rehash=0, Collisions=13/153=8%
 
 # Pattern-specific Variable Values
 
@@ -277,9 +277,9 @@ GDMSESSION = gnome
 
 # Directories
 
-# . (device 45, inode 5213377): 13 files, no impossibilities.
+# . (device 45, inode 5213377): 7 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
  
 # Implicit Rules
@@ -291,21 +291,9 @@ GDMSESSION = gnome
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-13 08:43:13.149021269
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 10):
-	python -m pip uninstall -y universidad && rm -rf __pycache__ build universidad.egg-info universidad/__pycache__
-
-Default: build run
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -320,34 +308,34 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-run:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
-	python .
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
-build:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 4):
-	python -m pip install .
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 174 B / avg = 8 B
-# current buf: size = 8162 B / used = 174 B / count = 20 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 141 B / avg = 10 B
+# current buf: size = 8162 B / used = 141 B / count = 14 / avg = 10 B
 
-# strcache performance: lookups = 31 / hit rate = 35%
+# strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Sun Aug 14 13:00:07 2022
+# Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
+# Finished Make data base on Sun Aug 14 20:50:15 2022
 
  

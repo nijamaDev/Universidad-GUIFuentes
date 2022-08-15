@@ -3,7 +3,8 @@ import PySimpleGUIQt as sg
 from minizinc import Instance, Model, Solver
 
 
-wTitle = 'Universidad'
+wTitle = 'Ubicación Universidad'
+location = (None, None)
 tMunicipio = '        Municipios        '
 n = ''
 m = 0
@@ -22,14 +23,16 @@ def resolver(n, m, ciudades, mod):
     return rtn
 
 
-# sg.theme('Reddit')   # Add a touch of color
+# sg.theme('DarkBrown4')   # Add a touch of color
+
+
 def makeLayout():
     global n
     global m
     layout = [
         [
             sg.Stretch(),
-            sg.Text('Bienvenido a Universidad solver'),
+            sg.Text('Por favor, ingrese los siguientes datos:'),
             sg.Stretch()
         ],
         [
@@ -37,8 +40,9 @@ def makeLayout():
             sg.Stretch(),
             sg.InputText(
                 default_text=n,
-                enable_events=True,
                 key="-N-",
+                justification="center",
+                background_color="#dee",
                 size=(4, 0.7))
         ],
         [
@@ -46,8 +50,9 @@ def makeLayout():
             sg.Stretch(),
             sg.InputText(
                 default_text=m,
-                enable_events=True,
                 key="-M-",
+                justification="center",
+                background_color="#dee",
                 size=(4, 0.7))
         ],
         [],
@@ -62,13 +67,15 @@ def makeLayout():
                 sg.Text("Ciudad "+str(i+1)+":"),
                 sg.InputText(
                     default_text='0,0',
-                    key="ciudad"+str(i+1),
-                    size=(4, 0.7)
+                    key="ciudad"+str(i),
+                    justification="center",
+                    background_color="#dee",
+                    size=(6, 0.7)
                 ),
                 sg.Stretch()]
             for i in range(m)
         ],
-        [sg.Button('Salir')]
+        [sg.Button('Generar archivo',  key='-DATA-')]
     ]
     return layout
 
@@ -76,7 +83,8 @@ def makeLayout():
 def Main(model):
     # testWin()
     # test(model)
-    location = (None, None)
+    global n
+    global m
     window = sg.Window(wTitle, makeLayout(), location=location)
     while True:
         ev, values = window.read()
@@ -84,17 +92,39 @@ def Main(model):
             break
         elif ev == tMunicipio:
             try:
-                global n
-                global m
-                n = int(values['-N-'])
                 m = int(values['-M-'])
+                n = int(values['-N-'])
             except:
                 err()
-            print(n)
             windowNew = sg.Window(wTitle, makeLayout(), location=location)
             window.Close()
             window = windowNew
+        elif ev == '-DATA-':
+            try:
+                if (n > 0 and m > 0):
+                    makeData(values)
+                    evalueData(values)
+            except:
+                err()
     window.close()
+
+
+def makeData(values):
+    global n
+    global m
+    try:
+        newData = \
+            "n=" + str(n) + ";\n" + \
+            "m=" + str(m) + ";\n" + \
+            "ciudades=[|" + \
+            "\n|".join([values['ciudad'+str(i)] for i in range(m)]) \
+            + "|];"
+        archivo = open("Datos.dzn", "w")
+        archivo.write(newData)
+        archivo.close()
+
+    except:
+        err()
 
 
 def err():

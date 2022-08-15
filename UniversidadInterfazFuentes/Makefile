@@ -7,4 +7,4 @@ run:
 	python3 .
 
 clean:
-	python3 -m pip uninstall -y universidad && rm -rf __pycache__ build universidad.egg-info universidad/__pycache__
+	python3 -m pip uninstall -y universidad && rm -rf __pycache__ build universidad.egg-info universidad/__pycache__ *.dzn
