@@ -16,7 +16,7 @@ var int: largestDistance; % Distancia mas larga de la Universidad a una de las c
 
 % Establece la distancia de la universidad a cada una de las ciudades  
 constraint forall(i in 1..m)(
-  distances[i] = pow(abs(posUniversidad[1]-ciudades[i,1]),2)+pow(abs(posUniversidad[2]-ciudades[i,2]),2));
+  distances[i] = pow((posUniversidad[1]-ciudades[i,1]),2)+pow((posUniversidad[2]-ciudades[i,2]),2));
 
 % Selecciona la distancia mas larga de la universidad a las ciudades
 constraint largestDistance = max(distances);
