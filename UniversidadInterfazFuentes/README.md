@@ -3,7 +3,7 @@
 Proyecto Complejidad y Optimización<br/>
 Escuela de Ingeniería de Sistemas y Computación<br/>
 
-Autores:<br/>
+**Autores:**<br/>
 Alejandro Caicedo - 1827260 - AlejoCx2<br/>
 Juan José Dorado - 1827439 - Git-Fanfo<br/>
 Nicolás Jaramillo - 1840558 - nijamaDev<br/>
