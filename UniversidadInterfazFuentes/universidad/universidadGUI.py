@@ -10,13 +10,11 @@ n = ''
 m = 0
 
 
-def resolver(n, m, ciudades, mod):
+def resolver(mod, file):
     modelo = Model(mod)
     gecode = Solver.lookup("gecode")
+    modelo.add_file(file)
     instance = Instance(gecode, modelo)
-    instance["n"] = n
-    instance["m"] = m
-    instance["ciudades"] = ciudades
     result = instance.solve()
     rtn = result["posUniversidad"]
     rtn.append(round(pow(result["largestDistance"], 0.5), 2))
@@ -82,7 +80,7 @@ def makeLayout():
 
 def Main(model):
     # testWin()
-    # test(model)
+    # test()
     global n
     global m
     window = sg.Window(wTitle, makeLayout(), location=location)
@@ -103,7 +101,9 @@ def Main(model):
             try:
                 if (n > 0 and m > 0):
                     makeData(values)
-                    evalueData(values)
+                    print('1')
+                    print(resolver(model, 'Datos.dzn'))
+                    print('2')
             except:
                 err()
     window.close()
@@ -131,22 +131,9 @@ def err():
     print('no mi rey')
 
 
-def test(model):
+def test():
     print(
-        resolver(
-            10, 10,
-            [
-                [0, 1],
-                [2, 4],
-                [3, 8],
-                [4, 1],
-                [6, 3],
-                [6, 4],
-                [6, 5],
-                [8, 7],
-                [9, 3],
-                [9, 10]
-            ], model))
+        resolver("../Universidad.mzn", '../MisInstancias/Datos.dzn'))
     exit()
 
 
