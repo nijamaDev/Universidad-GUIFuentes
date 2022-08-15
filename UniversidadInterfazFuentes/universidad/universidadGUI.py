@@ -3,6 +3,12 @@ import PySimpleGUIQt as sg
 from minizinc import Instance, Model, Solver
 
 
+wTitle = 'Universidad'
+tMunicipio = '        Municipios        '
+n = ''
+m = 0
+
+
 def resolver(n, m, ciudades, mod):
     modelo = Model(mod)
     gecode = Solver.lookup("gecode")
@@ -12,12 +18,14 @@ def resolver(n, m, ciudades, mod):
     instance["ciudades"] = ciudades
     result = instance.solve()
     rtn = result["posUniversidad"]
-    rtn.append(round(pow(result["largestDistance"],0.5),2))
+    rtn.append(round(pow(result["largestDistance"], 0.5), 2))
     return rtn
 
 
 # sg.theme('Reddit')   # Add a touch of color
-def makeLayout(M):
+def makeLayout():
+    global n
+    global m
     layout = [
         [
             sg.Stretch(),
@@ -27,15 +35,39 @@ def makeLayout(M):
         [
             sg.Text('Tamaño del cuadrado (n)'),
             sg.Stretch(),
-            sg.InputText(enable_events=True, key="-N-")
+            sg.InputText(
+                default_text=n,
+                enable_events=True,
+                key="-N-",
+                size=(4, 0.7))
         ],
         [
             sg.Text('Número de municipios (m)'),
             sg.Stretch(),
-            sg.InputText(enable_events=True, key="-M-")
+            sg.InputText(
+                default_text=m,
+                enable_events=True,
+                key="-M-",
+                size=(4, 0.7))
         ],
         [],
-        [sg.Button('Ok')],
+        [
+            sg.Stretch(),
+            sg.Button(tMunicipio),
+            sg.Stretch()
+        ],
+        *[
+            [
+                sg.Stretch(),
+                sg.Text("Ciudad "+str(i+1)+":"),
+                sg.InputText(
+                    default_text='0,0',
+                    key="ciudad"+str(i+1),
+                    size=(4, 0.7)
+                ),
+                sg.Stretch()]
+            for i in range(m)
+        ],
         [sg.Button('Salir')]
     ]
     return layout
@@ -44,30 +76,29 @@ def makeLayout(M):
 def Main(model):
     # testWin()
     # test(model)
-    wTitle = 'Universidad'
     location = (None, None)
-    window = sg.Window(wTitle, makeLayout(0), location=location)
+    window = sg.Window(wTitle, makeLayout(), location=location)
     while True:
         ev, values = window.read()
         if ev == sg.WIN_CLOSED or ev == 'Cancel':
             break
-        elif ev == 'Ok':
-            updateN(values['-N-'])
-            updateM(values['-M-'])
-            M = 1
-            windowNew = sg.Window(wTitle, makeLayout(M), location=location)
+        elif ev == tMunicipio:
+            try:
+                global n
+                global m
+                n = int(values['-N-'])
+                m = int(values['-M-'])
+            except:
+                err()
+            print(n)
+            windowNew = sg.Window(wTitle, makeLayout(), location=location)
             window.Close()
             window = windowNew
-        print(values)
     window.close()
 
 
-def updateN(N):
-    print(N)
-
-
-def updateM(M):
-    print(M)
+def err():
+    print('no mi rey')
 
 
 def test(model):
