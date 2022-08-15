@@ -10,4 +10,6 @@ Sara Maradiago - 1741648 - SJMC29<br/>
 
 ## Nota
 
-Todas las pruebas de interfaz fueron realizadas en Linux
+Todas las pruebas de interfaz fueron realizadas en Linux<br/>
+
+En la carpeta _UniversidadInterfazFuentes_ existe un README.md con instrucciones de cómo ejecutar el programa
